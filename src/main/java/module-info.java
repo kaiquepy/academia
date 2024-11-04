@@ -3,6 +3,6 @@ module br.com.milhoverde.academia.academia {
     requires javafx.fxml;
 
 
-    opens br.com.milhoverde.academia.academia to javafx.fxml;
-    exports br.com.milhoverde.academia.academia;
+    opens com.academia to javafx.fxml;
+    exports com.academia;
 }

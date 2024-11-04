@@ -1,4 +1,4 @@
-package br.com.milhoverde.academia.academia;
+package com.academia;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

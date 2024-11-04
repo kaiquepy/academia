@@ -1,4 +1,4 @@
-package br.com.milhoverde.academia.academia;
+package com.academia;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
