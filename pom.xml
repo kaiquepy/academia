@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>br.com.milhoverde.academia</groupId>
+  <groupId>com.academia</groupId>
   <artifactId>academia</artifactId>
   <version>1.0-SNAPSHOT</version>
   <name>academia</name>
@@ -58,7 +58,7 @@
             <!-- Default configuration for running with: mvn clean javafx:run -->
             <id>default-cli</id>
             <configuration>
-              <mainClass>br.com.milhoverde.academia.academia/com.academia.HelloApplication</mainClass>
+              <mainClass>com.academia/com.academia.Main</mainClass>
               <launcher>app</launcher>
               <jlinkZipName>app</jlinkZipName>
               <jlinkImageName>app</jlinkImageName>
