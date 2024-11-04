@@ -1,4 +1,4 @@
-module br.com.milhoverde.academia.academia {
+module com.academia {
     requires javafx.controls;
     requires javafx.fxml;
 
