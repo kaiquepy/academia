@@ -14,7 +14,9 @@ import java.util.List;
  */
 public class ClienteDAOMySQL implements ClienteDAO {
     /**
-     * @param cliente
+     * Adiciona um novo cliente.
+     *
+     * @param cliente Cliente a ser adicionado.
      */
     @Override
     public void adicionarCliente(Cliente cliente) {
@@ -34,7 +36,9 @@ public class ClienteDAOMySQL implements ClienteDAO {
     }
 
     /**
-     * @param cpf
+     * Remove um cliente pelo CPF.
+     *
+     * @param cpf Cadastro de pessoa física do cliente.
      */
     @Override
     public void removerCliente(String cpf) {
@@ -45,12 +49,14 @@ public class ClienteDAOMySQL implements ClienteDAO {
             stmt.executeUpdate();
             System.out.println("Cliente deletado do MySQL com CPF: " + cpf);
         } catch (Exception e) {
-            e.printStackTrace();
+            throw new RuntimeException("Erro ao remover cliente do MySQL", e);
         }
     }
 
     /**
-     * @param cliente
+     * Atualiza os dados de um cliente.
+     *
+     * @param cliente Cliente a ser atualizado.
      */
     @Override
     public void atualizarCliente(Cliente cliente) {
@@ -70,7 +76,9 @@ public class ClienteDAOMySQL implements ClienteDAO {
     }
 
     /**
-     * @param cpf
+     * Busca um cliente pelo CPF.
+     *
+     * @param cpf Cadastro de pessoa física do cliente.
      * @return Cliente
      */
     @Override
@@ -97,7 +105,9 @@ public class ClienteDAOMySQL implements ClienteDAO {
     }
 
     /**
-     * @return
+     * Lista todos os clientes cadastrados.
+     *
+     * @return List<Cliente>
      */
     @Override
     public List<Cliente> listarClientes() {
