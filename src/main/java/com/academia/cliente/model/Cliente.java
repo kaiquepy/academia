@@ -12,7 +12,15 @@ public class Cliente {
     private String telefone;
     private String email;
 
-
+    /**
+     * Construtor da classe Cliente.
+     *
+     * @param nome     Nome do cliente.
+     * @param cpf      Cadastro de pessoa física do cliente.
+     * @param endereco Endereço do cliente.
+     * @param telefone Telefone do cliente.
+     * @param email    E-mail do cliente.
+     */
     public Cliente(String nome, String cpf, String endereco, String telefone, String email) {
         this.nome = nome;
         this.cpf = cpf;
