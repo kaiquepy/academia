@@ -10,7 +10,9 @@ import java.util.List;
  */
 public class ClienteDAOJSON implements ClienteDAO {
     /**
-     * @param cliente
+     * Adiciona um novo cliente.
+     *
+     * @param cliente Cliente a ser adicionado.
      */
     @Override
     public void adicionarCliente(Cliente cliente) {
@@ -18,7 +20,9 @@ public class ClienteDAOJSON implements ClienteDAO {
     }
 
     /**
-     * @param cpf
+     * Remove um cliente pelo CPF.
+     *
+     * @param cpf Cadastro de pessoa física do cliente.
      */
     @Override
     public void removerCliente(String cpf) {
@@ -26,7 +30,9 @@ public class ClienteDAOJSON implements ClienteDAO {
     }
 
     /**
-     * @param cliente
+     * Atualiza os dados de um cliente.
+     *
+     * @param cliente Cliente a ser atualizado.
      */
     @Override
     public void atualizarCliente(Cliente cliente) {
@@ -34,7 +40,9 @@ public class ClienteDAOJSON implements ClienteDAO {
     }
 
     /**
-     * @param cpf
+     * Busca um cliente pelo CPF.
+     *
+     * @param cpf Cadastro de pessoa física do cliente.
      * @return Cliente
      */
     @Override
@@ -44,7 +52,9 @@ public class ClienteDAOJSON implements ClienteDAO {
     }
 
     /**
-     * @return
+     * Lista todos os clientes cadastrados.
+     *
+     * @return List<Cliente>
      */
     @Override
     public List<Cliente> listarClientes() {
