@@ -5,10 +5,21 @@ import com.academia.cliente.model.Cliente;
 
 import java.util.Scanner;
 
+/**
+ * Classe ClienteConsoleView representa a camada de visão de clientes.
+ *
+ * Esta classe é responsável por exibir um menu de opções para interação com o usuário.
+ */
 public class ClienteConsoleView {
+    /**
+     * Exibe um menu de opções para interação com o usuário.
+     *
+     * @param clienteController Controller de cliente.
+     */
     public static void exibirMenu(ClienteController clienteController) {
         Scanner scanner = new Scanner(System.in);
         int opcao;
+
         do {
             System.out.println("\n--- Gestão de Clientes ---");
             System.out.println("1. Cadastrar Cliente");
