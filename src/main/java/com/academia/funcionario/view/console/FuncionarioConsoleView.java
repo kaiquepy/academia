@@ -6,18 +6,29 @@ import com.academia.funcionario.model.Funcionario;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Classe FuncionarioConsoleView representa a camada de visão de funcionários.
+ *
+ * Esta classe é responsável por exibir um menu de opções para interação com o usuário.
+ */
 public class FuncionarioConsoleView {
     private static final Scanner scanner = new Scanner(System.in);
 
+    /**
+     * Exibe um menu de opções para interação com o usuário.
+     *
+     * @param funcionarioController Controller de funcionário.
+     */
     public static void exibirMenu(FuncionarioController funcionarioController) {
-        int opcao = -1;
-        while (opcao != 0) {
+        int opcao;
+
+        do {
             System.out.println("\n--- Gestão de Funcionários ---");
-            System.out.println("1. Adicionar Funcionário");
-            System.out.println("2. Buscar Funcionário por ID");
-            System.out.println("3. Listar Funcionários");
-            System.out.println("4. Atualizar Funcionário");
-            System.out.println("5. Remover Funcionário");
+            System.out.println("1. Cadastrar Funcionário");
+            System.out.println("2. Atualizar Funcionário");
+            System.out.println("3. Remover Funcionário");
+            System.out.println("4. Buscar Funcionário");
+            System.out.println("5. Listar Funcionários");
             System.out.println("0. Sair");
             System.out.print("Escolha uma opção: ");
             opcao = scanner.nextInt();
@@ -28,16 +39,16 @@ public class FuncionarioConsoleView {
                     adicionarFuncionario(funcionarioController);
                     break;
                 case 2:
-                    buscarFuncionarioPorId(funcionarioController);
-                    break;
-                case 3:
-                    listarFuncionarios(funcionarioController);
-                    break;
-                case 4:
                     atualizarFuncionario(funcionarioController);
                     break;
-                case 5:
+                case 3:
                     removerFuncionario(funcionarioController);
+                    break;
+                case 4:
+                    buscarFuncionarioPorId(funcionarioController);
+                    break;
+                case 5:
+                    listarFuncionarios(funcionarioController);
                     break;
                 case 0:
                     System.out.println("Saindo...");
@@ -46,9 +57,14 @@ public class FuncionarioConsoleView {
                     System.out.println("Opção inválida!");
                     break;
             }
-        }
+        } while (opcao != 0);
     }
 
+    /**
+     * Adiciona um novo funcionário.
+     *
+     * @param funcionarioController Controller de funcionário.
+     */
     private static void adicionarFuncionario(FuncionarioController funcionarioController) {
         System.out.print("Nome: ");
         String nome = scanner.nextLine();
@@ -62,6 +78,11 @@ public class FuncionarioConsoleView {
         System.out.println("Funcionário adicionado com sucesso!");
     }
 
+    /**
+     * Busca um funcionário por ID.
+     *
+     * @param funcionarioController Controller de funcionário.
+     */
     private static void buscarFuncionarioPorId(FuncionarioController funcionarioController) {
         System.out.print("ID do Funcionário: ");
         int id = scanner.nextInt();
@@ -74,6 +95,11 @@ public class FuncionarioConsoleView {
         }
     }
 
+    /**
+     * Lista todos os funcionários cadastrados.
+     *
+     * @param funcionarioController Controller de funcionário.
+     */
     private static void listarFuncionarios(FuncionarioController funcionarioController) {
         ArrayList<Funcionario> funcionarios = funcionarioController.listarFuncionarios();
         if (funcionarios.isEmpty()) {
@@ -86,6 +112,11 @@ public class FuncionarioConsoleView {
         }
     }
 
+    /**
+     * Atualiza um funcionário existente.
+     *
+     * @param funcionarioController Controller de funcionário.
+     */
     private static void atualizarFuncionario(FuncionarioController funcionarioController) {
         System.out.print("ID do Funcionário: ");
         int id = scanner.nextInt();
@@ -102,6 +133,11 @@ public class FuncionarioConsoleView {
         System.out.println("Funcionário atualizado com sucesso!");
     }
 
+    /**
+     * Remove um funcionário existente.
+     *
+     * @param funcionarioController Controller de funcionário.
+     */
     private static void removerFuncionario(FuncionarioController funcionarioController) {
         System.out.print("ID do Funcionário: ");
         int id = scanner.nextInt();
