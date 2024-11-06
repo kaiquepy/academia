@@ -42,20 +42,20 @@ public class ClienteController {
     /**
      * Remove um cliente pelo CPF.
      *
-     * @param cpf Cadastro de pessoa física do cliente.
+     * @param id Identificador do cliente.
      */
-    public void removerCliente(String cpf) {
-        clienteDAO.removerCliente(cpf);
+    public void removerCliente(int id) {
+        clienteDAO.removerCliente(id);
     }
 
     /**
      * Busca um cliente pelo CPF.
      *
-     * @param cpf Cadastro de pessoa física do cliente.
+     * @param id Identificador do cliente.
      * @return Cliente
      */
-    public Cliente buscarCliente(String cpf) {
-        return clienteDAO.buscarClientePorCpf(cpf);
+    public Cliente buscarCliente(int id) {
+        return clienteDAO.buscarClientePorId(id);
     }
 
     /**
