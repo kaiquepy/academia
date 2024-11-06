@@ -19,7 +19,6 @@ public class ClienteConsoleView {
      * @param clienteController Controller de cliente.
      */
     public static void exibirMenu(ClienteController clienteController) {
-        Scanner scanner = new Scanner(System.in);
         int opcao;
 
         do {
@@ -59,6 +58,11 @@ public class ClienteConsoleView {
         } while (opcao != 0);
     }
 
+    /**
+     * Adiciona um novo cliente.
+     *
+     * @param clienteController Controller de cliente.
+     */
     public static void adicionarCliente(ClienteController clienteController) {
         System.out.print("Nome: ");
         String nome = scanner.nextLine();
@@ -74,6 +78,11 @@ public class ClienteConsoleView {
         clienteController.cadastrarCliente(novoCliente);
     }
 
+    /**
+     * Atualiza um cliente existente.
+     *
+     * @param clienteController Controller de cliente.
+     */
     public static void atualizarCliente(ClienteController clienteController) {
         System.out.print("ID do cliente a ser atualizado: ");
         int id = scanner.nextInt();
@@ -96,12 +105,22 @@ public class ClienteConsoleView {
         }
     }
 
+    /**
+     * Remove um cliente existente.
+     *
+     * @param clienteController Controller de cliente.
+     */
     public static void removerCliente(ClienteController clienteController) {
         System.out.print("ID do cliente a ser removido: ");
         int id = scanner.nextInt();
         clienteController.removerCliente(id);
     }
 
+    /**
+     * Busca um cliente pelo ID.
+     *
+     * @param clienteController Controller de cliente.
+     */
     public static void buscarCliente(ClienteController clienteController) {
         System.out.print("Id do cliente: ");
         int id = scanner.nextInt();
