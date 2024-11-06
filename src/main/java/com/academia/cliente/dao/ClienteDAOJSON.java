@@ -22,11 +22,11 @@ public class ClienteDAOJSON implements ClienteDAO {
     /**
      * Remove um cliente pelo CPF.
      *
-     * @param cpf Cadastro de pessoa física do cliente.
+     * @param id Identificador do cliente.
      */
     @Override
-    public void removerCliente(String cpf) {
-        System.out.println("Removendo cliente no JSON com CPF: " + cpf);
+    public void removerCliente(int id) {
+        System.out.println("Removendo cliente no JSON com Id: " + id);
     }
 
     /**
@@ -42,12 +42,12 @@ public class ClienteDAOJSON implements ClienteDAO {
     /**
      * Busca um cliente pelo CPF.
      *
-     * @param cpf Cadastro de pessoa física do cliente.
+     * @param id Identificador do cliente.
      * @return Cliente
      */
     @Override
-    public Cliente buscarClientePorCpf(String cpf) {
-        System.out.println("Buscando cliente no JSON com CPF: " + cpf);
+    public Cliente buscarClientePorId(int id) {
+        System.out.println("Buscando cliente no JSON com Id: " + id);
         return null;
     }
 

@@ -38,16 +38,16 @@ public class ClienteDAOMySQL implements ClienteDAO {
     /**
      * Remove um cliente pelo CPF.
      *
-     * @param cpf Cadastro de pessoa física do cliente.
+     * @param id Identificador do cliente.
      */
     @Override
-    public void removerCliente(String cpf) {
+    public void removerCliente(int id) {
         try (Connection conn = StorageMySQL.getConnection()) {
-            String sql = "DELETE FROM clientes WHERE cpf = ?";
+            String sql = "DELETE FROM clientes WHERE id = ?";
             PreparedStatement stmt = conn.prepareStatement(sql);
-            stmt.setString(1, cpf);
+            stmt.setInt(1, id);
             stmt.executeUpdate();
-            System.out.println("Cliente deletado do MySQL com CPF: " + cpf);
+            System.out.println("Cliente deletado do MySQL com Id: " + id);
         } catch (Exception e) {
             throw new RuntimeException("Erro ao remover cliente do MySQL", e);
         }
@@ -78,18 +78,19 @@ public class ClienteDAOMySQL implements ClienteDAO {
     /**
      * Busca um cliente pelo CPF.
      *
-     * @param cpf Cadastro de pessoa física do cliente.
+     * @param id Identificador do cliente.
      * @return Cliente
      */
     @Override
-    public Cliente buscarClientePorCpf(String cpf) {
+    public Cliente buscarClientePorId(int id) {
         try (Connection conn = StorageMySQL.getConnection()) {
-            String sql = "SELECT * FROM clientes WHERE cpf = ?";
+            String sql = "SELECT * FROM clientes WHERE id = ?";
             PreparedStatement stmt = conn.prepareStatement(sql);
-            stmt.setString(1, cpf);
+            stmt.setInt(1, id);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
                 return new Cliente(
+                        rs.getInt("id"),
                         rs.getString("nome"),
                         rs.getString("cpf"),
                         rs.getString("endereco"),
@@ -100,7 +101,7 @@ public class ClienteDAOMySQL implements ClienteDAO {
         } catch (Exception e) {
             throw new RuntimeException("Erro ao buscar cliente no MySQL", e);
         }
-        System.out.println("Cliente não encontrado no MySQL com CPF: " + cpf);
+        System.out.println("Cliente não encontrado no MySQL com Id: " + id);
         return null;
     }
 
@@ -118,6 +119,7 @@ public class ClienteDAOMySQL implements ClienteDAO {
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
                 clientes.add(new Cliente(
+                        rs.getInt("id"),
                         rs.getString("nome"),
                         rs.getString("cpf"),
                         rs.getString("endereco"),
