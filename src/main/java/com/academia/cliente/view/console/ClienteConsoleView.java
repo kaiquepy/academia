@@ -11,6 +11,8 @@ import java.util.Scanner;
  * Esta classe é responsável por exibir um menu de opções para interação com o usuário.
  */
 public class ClienteConsoleView {
+    private static final Scanner scanner = new Scanner(System.in);
+
     /**
      * Exibe um menu de opções para interação com o usuário.
      *
@@ -34,51 +36,16 @@ public class ClienteConsoleView {
 
             switch (opcao) {
                 case 1:
-                    System.out.print("Nome: ");
-                    String nome = scanner.nextLine();
-                    System.out.print("CPF: ");
-                    String cpf = scanner.nextLine();
-                    System.out.print("Endereço: ");
-                    String endereco = scanner.nextLine();
-                    System.out.print("Telefone: ");
-                    String telefone = scanner.nextLine();
-                    System.out.print("Email: ");
-                    String email = scanner.nextLine();
-                    Cliente novoCliente = new Cliente(nome, cpf, endereco, telefone, email);
-                    clienteController.cadastrarCliente(novoCliente);
+                    adicionarCliente(clienteController);
                     break;
                 case 2:
-                    System.out.print("CPF do cliente a ser atualizado: ");
-                    cpf = scanner.nextLine();
-                    Cliente clienteAtualizado = clienteController.buscarCliente(cpf);
-                    if (clienteAtualizado != null) {
-                        System.out.print("Novo Nome: ");
-                        clienteAtualizado.setNome(scanner.nextLine());
-                        System.out.print("Novo Endereço: ");
-                        clienteAtualizado.setEndereco(scanner.nextLine());
-                        System.out.print("Novo Telefone: ");
-                        clienteAtualizado.setTelefone(scanner.nextLine());
-                        System.out.print("Novo Email: ");
-                        clienteAtualizado.setEmail(scanner.nextLine());
-                        clienteController.atualizarCliente(clienteAtualizado);
-                    } else {
-                        System.out.println("Cliente não encontrado!");
-                    }
+                    atualizarCliente(clienteController);
                     break;
                 case 3:
-                    System.out.print("CPF do cliente a ser removido: ");
-                    cpf = scanner.nextLine();
-                    clienteController.removerCliente(cpf);
+                    removerCliente(clienteController);
                     break;
                 case 4:
-                    System.out.print("CPF do cliente: ");
-                    cpf = scanner.nextLine();
-                    Cliente cliente = clienteController.buscarCliente(cpf);
-                    if (cliente != null) {
-                        System.out.println("Cliente encontrado: " + cliente.getNome());
-                    } else {
-                        System.out.println("Cliente não encontrado!");
-                    }
+                    buscarCliente(clienteController);
                     break;
                 case 5:
                     clienteController.listarClientes();
@@ -90,5 +57,59 @@ public class ClienteConsoleView {
                     System.out.println("Opção inválida!");
             }
         } while (opcao != 0);
+    }
+
+    public static void adicionarCliente(ClienteController clienteController) {
+        System.out.print("Nome: ");
+        String nome = scanner.nextLine();
+        System.out.print("CPF: ");
+        String cpf = scanner.nextLine();
+        System.out.print("Endereço: ");
+        String endereco = scanner.nextLine();
+        System.out.print("Telefone: ");
+        String telefone = scanner.nextLine();
+        System.out.print("Email: ");
+        String email = scanner.nextLine();
+        Cliente novoCliente = new Cliente(0, nome, cpf, endereco, telefone, email);
+        clienteController.cadastrarCliente(novoCliente);
+    }
+
+    public static void atualizarCliente(ClienteController clienteController) {
+        System.out.print("ID do cliente a ser atualizado: ");
+        int id = scanner.nextInt();
+        scanner.nextLine(); // Limpar o buffer
+
+        Cliente clienteAtualizado = clienteController.buscarCliente(id);
+
+        if (clienteAtualizado != null) {
+            System.out.print("Novo Nome: ");
+            clienteAtualizado.setNome(scanner.nextLine());
+            System.out.print("Novo Endereço: ");
+            clienteAtualizado.setEndereco(scanner.nextLine());
+            System.out.print("Novo Telefone: ");
+            clienteAtualizado.setTelefone(scanner.nextLine());
+            System.out.print("Novo Email: ");
+            clienteAtualizado.setEmail(scanner.nextLine());
+            clienteController.atualizarCliente(clienteAtualizado);
+        } else {
+            System.out.println("Cliente não encontrado!");
+        }
+    }
+
+    public static void removerCliente(ClienteController clienteController) {
+        System.out.print("ID do cliente a ser removido: ");
+        int id = scanner.nextInt();
+        clienteController.removerCliente(id);
+    }
+
+    public static void buscarCliente(ClienteController clienteController) {
+        System.out.print("Id do cliente: ");
+        int id = scanner.nextInt();
+        Cliente cliente = clienteController.buscarCliente(id);
+        if (cliente != null) {
+            System.out.println("Cliente encontrado: " + cliente.getNome());
+        } else {
+            System.out.println("Cliente não encontrado!");
+        }
     }
 }
