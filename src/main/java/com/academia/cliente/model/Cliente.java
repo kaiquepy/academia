@@ -6,6 +6,7 @@ package com.academia.cliente.model;
  * Ela possui atributos como nome, CPF, endereço, telefone e e-mail.
  */
 public class Cliente {
+    private int id;
     private String nome;
     private String cpf;
     private String endereco;
@@ -15,13 +16,15 @@ public class Cliente {
     /**
      * Construtor da classe Cliente.
      *
+     * @param id       Identificador do cliente.
      * @param nome     Nome do cliente.
      * @param cpf      Cadastro de pessoa física do cliente.
      * @param endereco Endereço do cliente.
      * @param telefone Telefone do cliente.
      * @param email    E-mail do cliente.
      */
-    public Cliente(String nome, String cpf, String endereco, String telefone, String email) {
+    public Cliente(int id, String nome, String cpf, String endereco, String telefone, String email) {
+        this.id = id;
         this.nome = nome;
         this.cpf = cpf;
         this.endereco = endereco;
@@ -30,6 +33,10 @@ public class Cliente {
     }
 
     // region Getters and Setters
+    public int getId() {
+        return id;
+    }
+
     public String getNome() {
         return nome;
     }
@@ -74,6 +81,7 @@ public class Cliente {
     @Override
     public String toString() {
         return "Cliente{" +
+                "id=" + id + '\'' +
                 "nome='" + nome + '\'' +
                 ", cpf='" + cpf + '\'' +
                 ", endereco='" + endereco + '\'' +
