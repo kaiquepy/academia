@@ -19,11 +19,11 @@ public interface ClienteDAO {
     void adicionarCliente(Cliente cliente);
 
     /**
-     * Remove um cliente pelo CPF.
+     * Remove um cliente pelo Id.
      *
-     * @param cpf Cadastro de pessoa física do cliente.
+     * @param id Identificador do cliente.
      */
-    void removerCliente(String cpf);
+    void removerCliente(int id);
 
     /**
      * Atualiza os dados de um cliente.
@@ -35,10 +35,10 @@ public interface ClienteDAO {
     /**
      * Busca um cliente pelo CPF.
      *
-     * @param cpf Cadastro de pessoa física do cliente.
+     * @param id Identificador do cliente.
      * @return Cliente
      */
-    Cliente buscarClientePorCpf(String cpf);
+    Cliente buscarClientePorId(int id);
 
     /**
      * Lista todos os clientes cadastrados.
