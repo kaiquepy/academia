@@ -1,7 +1,13 @@
 package com.academia.cliente.controller;
 
 import com.academia.cliente.dao.ClienteDAO;
+import com.academia.cliente.dao.ClienteDAOJSON;
+import com.academia.cliente.dao.ClienteDAOMySQL;
 import com.academia.cliente.model.Cliente;
+import com.academia.utils.Config;
+
+import java.io.IOException;
+import java.util.Properties;
 
 /**
  * Classe ClienteController representa a camada de controle de clientes.
@@ -14,11 +20,19 @@ public class ClienteController {
 
     /**
      * Construtor da classe ClienteController.
-     *
-     * @param clientDAO DAO de cliente.
      */
-    public ClienteController(ClienteDAO clientDAO) {
-        this.clienteDAO = clientDAO;
+    public ClienteController() {
+        try {
+            Properties config = Config.getProperties();
+
+            if (config.getProperty("storage.type").equals("json")) {
+                this.clienteDAO = new ClienteDAOJSON();
+            } else {
+                this.clienteDAO = new ClienteDAOMySQL();
+            }
+        } catch (IOException e) {
+            throw new RuntimeException("Erro ao carregar arquivo de configuração.");
+        }
     }
 
     /**
