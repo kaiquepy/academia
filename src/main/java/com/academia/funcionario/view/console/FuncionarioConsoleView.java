@@ -13,13 +13,12 @@ import java.util.Scanner;
  */
 public class FuncionarioConsoleView {
     private static final Scanner scanner = new Scanner(System.in);
+    private static final FuncionarioController funcionarioController = new FuncionarioController();
 
     /**
      * Exibe um menu de opções para interação com o usuário.
-     *
-     * @param funcionarioController Controller de funcionário.
      */
-    public static void exibirMenu(FuncionarioController funcionarioController) {
+    public static void exibirMenu() {
         int opcao;
 
         do {
@@ -36,19 +35,19 @@ public class FuncionarioConsoleView {
 
             switch (opcao) {
                 case 1:
-                    adicionarFuncionario(funcionarioController);
+                    adicionarFuncionario();
                     break;
                 case 2:
-                    atualizarFuncionario(funcionarioController);
+                    atualizarFuncionario();
                     break;
                 case 3:
-                    removerFuncionario(funcionarioController);
+                    removerFuncionario();
                     break;
                 case 4:
-                    buscarFuncionarioPorId(funcionarioController);
+                    buscarFuncionarioPorId();
                     break;
                 case 5:
-                    listarFuncionarios(funcionarioController);
+                    listarFuncionarios();
                     break;
                 case 0:
                     System.out.println("Saindo...");
@@ -62,10 +61,8 @@ public class FuncionarioConsoleView {
 
     /**
      * Adiciona um novo funcionário.
-     *
-     * @param funcionarioController Controller de funcionário.
      */
-    private static void adicionarFuncionario(FuncionarioController funcionarioController) {
+    private static void adicionarFuncionario() {
         System.out.print("Nome: ");
         String nome = scanner.nextLine();
         System.out.print("Cargo: ");
@@ -80,10 +77,8 @@ public class FuncionarioConsoleView {
 
     /**
      * Busca um funcionário por ID.
-     *
-     * @param funcionarioController Controller de funcionário.
      */
-    private static void buscarFuncionarioPorId(FuncionarioController funcionarioController) {
+    private static void buscarFuncionarioPorId() {
         System.out.print("ID do Funcionário: ");
         int id = scanner.nextInt();
         scanner.nextLine();
@@ -97,10 +92,8 @@ public class FuncionarioConsoleView {
 
     /**
      * Lista todos os funcionários cadastrados.
-     *
-     * @param funcionarioController Controller de funcionário.
      */
-    private static void listarFuncionarios(FuncionarioController funcionarioController) {
+    private static void listarFuncionarios() {
         ArrayList<Funcionario> funcionarios = funcionarioController.listarFuncionarios();
         if (funcionarios.isEmpty()) {
             System.out.println("Nenhum funcionário encontrado.");
@@ -114,10 +107,8 @@ public class FuncionarioConsoleView {
 
     /**
      * Atualiza um funcionário existente.
-     *
-     * @param funcionarioController Controller de funcionário.
      */
-    private static void atualizarFuncionario(FuncionarioController funcionarioController) {
+    private static void atualizarFuncionario() {
         System.out.print("ID do Funcionário: ");
         int id = scanner.nextInt();
         scanner.nextLine();
@@ -135,10 +126,8 @@ public class FuncionarioConsoleView {
 
     /**
      * Remove um funcionário existente.
-     *
-     * @param funcionarioController Controller de funcionário.
      */
-    private static void removerFuncionario(FuncionarioController funcionarioController) {
+    private static void removerFuncionario() {
         System.out.print("ID do Funcionário: ");
         int id = scanner.nextInt();
         scanner.nextLine();
