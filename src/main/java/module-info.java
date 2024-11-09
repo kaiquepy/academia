@@ -8,5 +8,6 @@ module com.academia {
     opens com.academia to javafx.fxml;
     opens com.academia.funcionario.model to com.google.gson;
     opens com.academia.cliente.model to com.google.gson;
+    opens com.academia.sala.model to com.google.gson;
     exports com.academia;
 }
