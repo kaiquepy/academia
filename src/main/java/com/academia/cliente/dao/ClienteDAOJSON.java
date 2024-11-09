@@ -18,7 +18,7 @@ public class ClienteDAOJSON implements ClienteDAO {
 
     public ClienteDAOJSON() {
         Type clienteListType = new TypeToken<List<Cliente>>() {}.getType();
-        this.storage = new StorageJSON<>(clienteListType, "funcionarios.json");
+        this.storage = new StorageJSON<>(clienteListType, "clientes.json");
     }
 
     /**
