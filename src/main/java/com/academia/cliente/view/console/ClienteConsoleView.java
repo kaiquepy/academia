@@ -12,13 +12,12 @@ import java.util.Scanner;
  */
 public class ClienteConsoleView {
     private static final Scanner scanner = new Scanner(System.in);
+    private static final ClienteController clienteController = new ClienteController();
 
     /**
      * Exibe um menu de opções para interação com o usuário.
-     *
-     * @param clienteController Controller de cliente.
      */
-    public static void exibirMenu(ClienteController clienteController) {
+    public static void exibirMenu() {
         int opcao;
 
         do {
@@ -35,16 +34,16 @@ public class ClienteConsoleView {
 
             switch (opcao) {
                 case 1:
-                    adicionarCliente(clienteController);
+                    adicionarCliente();
                     break;
                 case 2:
-                    atualizarCliente(clienteController);
+                    atualizarCliente();
                     break;
                 case 3:
-                    removerCliente(clienteController);
+                    removerCliente();
                     break;
                 case 4:
-                    buscarCliente(clienteController);
+                    buscarCliente();
                     break;
                 case 5:
                     clienteController.listarClientes();
@@ -60,10 +59,8 @@ public class ClienteConsoleView {
 
     /**
      * Adiciona um novo cliente.
-     *
-     * @param clienteController Controller de cliente.
      */
-    public static void adicionarCliente(ClienteController clienteController) {
+    public static void adicionarCliente() {
         System.out.print("Nome: ");
         String nome = scanner.nextLine();
         System.out.print("CPF: ");
@@ -74,16 +71,15 @@ public class ClienteConsoleView {
         String telefone = scanner.nextLine();
         System.out.print("Email: ");
         String email = scanner.nextLine();
+
         Cliente novoCliente = new Cliente(0, nome, cpf, endereco, telefone, email);
         clienteController.cadastrarCliente(novoCliente);
     }
 
     /**
      * Atualiza um cliente existente.
-     *
-     * @param clienteController Controller de cliente.
      */
-    public static void atualizarCliente(ClienteController clienteController) {
+    public static void atualizarCliente() {
         System.out.print("ID do cliente a ser atualizado: ");
         int id = scanner.nextInt();
         scanner.nextLine(); // Limpar o buffer
@@ -107,23 +103,21 @@ public class ClienteConsoleView {
 
     /**
      * Remove um cliente existente.
-     *
-     * @param clienteController Controller de cliente.
      */
-    public static void removerCliente(ClienteController clienteController) {
+    public static void removerCliente() {
         System.out.print("ID do cliente a ser removido: ");
         int id = scanner.nextInt();
+
         clienteController.removerCliente(id);
     }
 
     /**
      * Busca um cliente pelo ID.
-     *
-     * @param clienteController Controller de cliente.
      */
-    public static void buscarCliente(ClienteController clienteController) {
+    public static void buscarCliente() {
         System.out.print("Id do cliente: ");
         int id = scanner.nextInt();
+
         Cliente cliente = clienteController.buscarCliente(id);
         if (cliente != null) {
             System.out.println("Cliente encontrado: " + cliente.getNome());
