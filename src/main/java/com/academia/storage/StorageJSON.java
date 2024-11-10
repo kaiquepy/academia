@@ -10,6 +10,7 @@ import java.util.List;
 
 /*
  * Classe para manipulação de arquivos JSON.
+ *
  * @param <T> Tipo de objeto a ser manipulado.
  */
 public class StorageJSON<T> {
@@ -20,6 +21,7 @@ public class StorageJSON<T> {
 
     /*
      * Construtor privado para garantir que a classe seja um singleton.
+     *
      * @param type Tipo de objeto a ser manipulado.
      */
     public StorageJSON(Type type, String filePath) {
@@ -30,6 +32,7 @@ public class StorageJSON<T> {
 
     /*
      * Método para salvar a lista de objetos no arquivo JSON.
+     *
      * @param data Lista de objetos a ser salva.
      */
     public void save(List<T> data) {
@@ -42,6 +45,7 @@ public class StorageJSON<T> {
 
     /*
      * Método para carregar a lista de objetos do arquivo JSON.
+     *
      * @return Lista de objetos carregada.
      */
     public List<T> load() {
@@ -50,5 +54,15 @@ public class StorageJSON<T> {
         } catch (IOException e) {
             throw new RuntimeException("Erro ao carregar os dados do arquivo JSON: " + e.getMessage());
         }
+    }
+
+    /*
+     * Sobrescreve o método toString para retornar uma descrição da classe.
+     *
+     * @return Descrição da classe.
+     */
+    @Override
+    public String toString() {
+        return "Classe para manipulação de arquivos JSON.";
     }
 }

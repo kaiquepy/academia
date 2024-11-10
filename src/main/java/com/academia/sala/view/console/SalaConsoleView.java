@@ -5,10 +5,16 @@ import com.academia.sala.model.Sala;
 
 import java.util.Scanner;
 
+/**
+ * Classe para representar a visualização de Salas no console.
+ */
 public class SalaConsoleView {
     private static final Scanner scanner = new Scanner(System.in);
     private static final SalaController salaController = new SalaController();
 
+    /**
+     * Método para exibir o menu de Salas no console.
+     */
     public static void exibirMenu() {
         int opcao;
 
@@ -36,6 +42,9 @@ public class SalaConsoleView {
         } while (opcao != 0);
     }
 
+    /**
+     * Método para cadastrar uma sala.
+     */
     private static void cadastrarSala() {
         System.out.print("Digite o nome da sala: ");
         String nome = scanner.nextLine();
@@ -48,6 +57,9 @@ public class SalaConsoleView {
         System.out.println("Sala cadastrada com sucesso!");
     }
 
+    /**
+     * Método para atualizar uma sala.
+     */
     private static void atualizarSala() {
         System.out.print("Digite o ID da sala a ser atualizada: ");
         int id = scanner.nextInt();
@@ -67,6 +79,9 @@ public class SalaConsoleView {
         }
     }
 
+    /**
+     * Método para remover uma sala.
+     */
     private static void removerSala() {
         System.out.print("Digite o ID da sala a ser removida: ");
         int id = scanner.nextInt();
@@ -79,6 +94,9 @@ public class SalaConsoleView {
         }
     }
 
+    /**
+     * Método para buscar uma sala.
+     */
     private static void buscarSala() {
         System.out.print("Digite o ID da sala a ser buscada: ");
         int id = scanner.nextInt();
@@ -92,6 +110,9 @@ public class SalaConsoleView {
         }
     }
 
+    /**
+     * Método para listar todas as salas.
+     */
     private static void listarSalas() {
         var salas = salaController.listarSalas();
         if (salas.isEmpty()) {
@@ -102,5 +123,17 @@ public class SalaConsoleView {
                 System.out.println("ID: " + sala.getId() + ", Nome: " + sala.getNome() + ", Capacidade: " + sala.getCapacidade());
             }
         }
+    }
+
+    /**
+     * Sobreposição do método toString para retornar qual controller está sendo utilizado.
+     *
+     * @return String com controller de sala.
+     */
+    @Override
+    public String toString() {
+        return "SolaConsoleView{" +
+                "salaController=" + salaController +
+                '}';
     }
 }
