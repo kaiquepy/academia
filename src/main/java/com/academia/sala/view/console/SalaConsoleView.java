@@ -25,26 +25,13 @@ public class SalaConsoleView {
             scanner.nextLine(); // Limpar o buffer
 
             switch (opcao) {
-                case 1:
-                    cadastrarSala();
-                    break;
-                case 2:
-                    atualizarSala();
-                    break;
-                case 3:
-                    removerSala();
-                    break;
-                case 4:
-                    buscarSala();
-                    break;
-                case 5:
-                    listarSalas();
-                    break;
-                case 0:
-                    System.out.println("Saindo...");
-                    break;
-                default:
-                    System.out.println("Opção inválida!");
+                case 1 -> cadastrarSala();
+                case 2 -> atualizarSala();
+                case 3 -> removerSala();
+                case 4 -> buscarSala();
+                case 5 -> listarSalas();
+                case 0 -> System.out.println("Saindo...");
+                default -> System.out.println("Opção inválida!");
             }
         } while (opcao != 0);
     }
