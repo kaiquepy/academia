@@ -16,6 +16,9 @@ public class LojaService {
     private final LojaDAO lojaDAO;
     private final ProdutoService produtoService = new ProdutoService();
 
+    /**
+     * Construtor da classe.
+     */
     public LojaService() {
         try {
             Properties config = Config.getProperties();
@@ -30,32 +33,58 @@ public class LojaService {
         }
     }
 
-    // Adicionar uma nova loja
+    /**
+     * Método para adicionar uma loja.
+     *
+     * @param loja Loja a ser adicionada.
+     */
     public void adicionarLoja(Loja loja) {
         lojaDAO.adicionarLoja(loja);
     }
 
-    // Atualizar dados da loja
+    /**
+     * Método para atualizar os dados de uma loja.
+     *
+     * @param loja Loja a ser atualizada.
+     */
     public void atualizarLoja(Loja loja) {
         lojaDAO.atualizarLoja(loja);
     }
 
-    // Remover uma loja
+    /**
+     * Método para remover uma loja por ID.
+     *
+     * @param lojaId ID da loja a ser removida.
+     */
     public void removerLoja(int lojaId) {
         lojaDAO.removerLoja(lojaId);
     }
 
-    // Buscar loja pelo ID
+    /**
+     * Método para buscar uma loja por ID.
+     *
+     * @param lojaId ID da loja a ser buscada.
+     * @return Loja encontrada.
+     */
     public Loja buscarLojaPorId(int lojaId) {
         return lojaDAO.buscarLojaPorId(lojaId);
     }
 
-    // Listar todas as lojas
+    /**
+     * Método para listar todas as lojas.
+     *
+     * @return Lista de lojas.
+     */
     public List<Loja> listarLojas() {
         return lojaDAO.listarLojas();
     }
 
-    // Adicionar produto na loja e no estoque
+    /**
+     * Método para adicionar um produto à loja.
+     *
+     * @param lojaId    ID da loja.
+     * @param produtoId ID do produto.
+     */
     public void adicionarProdutoNaLoja(int lojaId, int produtoId) {
         Produto produto = produtoService.buscarProdutoPorId(produtoId);
         if (produto != null) {
@@ -65,7 +94,12 @@ public class LojaService {
         }
     }
 
-    // Remover produto da loja e do estoque
+    /**
+     * Método para adicionar um produto à loja.
+     *
+     * @param lojaId    ID da loja.
+     * @param produtoId ID do produto.
+     */
     public void removerProdutoDaLoja(int lojaId, int produtoId) {
         try {
             lojaDAO.removerProdutoDaLoja(lojaId, produtoId);
@@ -75,7 +109,12 @@ public class LojaService {
 
     }
 
-    // Listar produtos de uma loja
+    /**
+     * Método para listar os produtos de uma loja.
+     *
+     * @param lojaId ID da loja.
+     * @return Lista de produtos da loja.
+     */
     public List<Produto> listarProdutosDaLoja(int lojaId) {
         return lojaDAO.listarProdutosDaLoja(lojaId);
     }

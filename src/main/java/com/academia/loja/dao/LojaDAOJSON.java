@@ -10,14 +10,25 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * Classe de acesso a dados (DAO) para Loja em JSON.
+ */
 public class LojaDAOJSON implements LojaDAO {
     private final StorageJSON<Loja> storage;
 
+    /**
+     * Construtor da classe.
+     */
     public LojaDAOJSON() {
         Type lojaListType = new TypeToken<List<Loja>>() {}.getType();
         this.storage = new StorageJSON<>(lojaListType, "lojas.json");
     }
 
+    /**
+     * Método para adicionar uma loja.
+     *
+     * @param loja Loja a ser adicionada.
+     */
     @Override
     public void adicionarLoja(Loja loja) {
         List<Loja> lojas = storage.load();
@@ -28,6 +39,11 @@ public class LojaDAOJSON implements LojaDAO {
         storage.save(lojas);
     }
 
+    /**
+     * Método para atualizar os dados de uma loja.
+     *
+     * @param lojaAtualizada Loja a ser atualizada.
+     */
     @Override
     public void atualizarLoja(Loja lojaAtualizada) {
         List<Loja> lojas = storage.load();
@@ -42,6 +58,11 @@ public class LojaDAOJSON implements LojaDAO {
         }
     }
 
+    /**
+     * Método para remover uma loja por ID.
+     *
+     * @param lojaId ID da loja a ser removida.
+     */
     @Override
     public void removerLoja(int lojaId) {
         List<Loja> lojas = storage.load();
@@ -53,6 +74,12 @@ public class LojaDAOJSON implements LojaDAO {
         }
     }
 
+    /**
+     * Método para buscar uma loja por ID.
+     *
+     * @param lojaId ID da loja a ser buscada.
+     * @return Loja encontrada.
+     */
     @Override
     public Loja buscarLojaPorId(int lojaId) {
         List<Loja> lojas = storage.load();
@@ -66,12 +93,23 @@ public class LojaDAOJSON implements LojaDAO {
         return null;
     }
 
+    /**
+     * Método para listar todas as lojas.
+     *
+     * @return Lista de lojas.
+     */
     @Override
     public List<Loja> listarLojas() {
         List<Loja> lojas = storage.load();
         return lojas != null ? new ArrayList<>(lojas) : new ArrayList<>();
     }
 
+    /**
+     * Método para adicionar um produto à loja.
+     *
+     * @param lojaId  ID da loja.
+     * @param produto Produto a ser adicionado.
+     */
     @Override
     public void adicionarProdutoNaLoja(int lojaId, Produto produto) {
         List<Loja> lojas = storage.load();
@@ -93,6 +131,12 @@ public class LojaDAOJSON implements LojaDAO {
         storage.save(lojas);
     }
 
+    /**
+     * Método para remover um produto da loja.
+     *
+     * @param lojaId    ID da loja.
+     * @param produtoId ID do produto.
+     */
     @Override
     public boolean removerProdutoDaLoja(int lojaId, int produtoId) {
         List<Loja> lojas = storage.load();
@@ -111,9 +155,27 @@ public class LojaDAOJSON implements LojaDAO {
         return false;
     }
 
+    /**
+     * Método para listar os produtos de uma loja.
+     *
+     * @param lojaId ID da loja.
+     * @return Lista de produtos.
+     */
     @Override
     public List<Produto> listarProdutosDaLoja(int lojaId) {
         Loja loja = buscarLojaPorId(lojaId);
         return loja != null ? loja.getProdutos() : new ArrayList<>();
+    }
+
+    /**
+     * Método para retornar a representação em String do objeto.
+     *
+     * @return String com a representação do objeto.
+     */
+    @Override
+    public String toString() {
+        return "LojaDAOJSON{" +
+                "storage=" + storage +
+                '}';
     }
 }

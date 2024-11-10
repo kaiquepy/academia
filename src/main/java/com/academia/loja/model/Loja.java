@@ -4,11 +4,21 @@ import com.academia.produto.model.Produto;
 
 import java.util.List;
 
+/**
+ * Classe que representa uma Loja.
+ */
 public class Loja {
     private int id;
     private String nome;
     private List<Produto> produtos;
 
+    /**
+     * Construtor da classe.
+     *
+     * @param id       identificador da Loja.
+     * @param nome     da Loja.
+     * @param produtos da Loja.
+     */
     public Loja(int id, String nome, List<Produto> produtos) {
         this.id = id;
         this.nome = nome;
@@ -41,6 +51,11 @@ public class Loja {
     }
     // endregion
 
+    /**
+     * Sobrescrita do método toString.
+     *
+     * @return String com informações da Loja.
+     */
     @Override
     public String toString() {
         return "Loja{" +

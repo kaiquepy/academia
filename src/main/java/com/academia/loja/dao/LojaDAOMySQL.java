@@ -10,7 +10,15 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Classe de acesso a dados (DAO) para Loja em MySQL.
+ */
 public class LojaDAOMySQL implements LojaDAO {
+    /**
+     * Método para adicionar uma loja.
+     *
+     * @param loja a ser adicionada.
+     */
     @Override
     public void adicionarLoja(Loja loja) {
         try (Connection conn = StorageMySQL.getConnection()) {
@@ -23,6 +31,11 @@ public class LojaDAOMySQL implements LojaDAO {
         }
     }
 
+    /**
+     * Atualiza os dados de uma loja.
+     *
+     * @param loja a ser atualizada.
+     */
     @Override
     public void atualizarLoja(Loja loja) {
         try (Connection conn = StorageMySQL.getConnection()) {
@@ -36,6 +49,11 @@ public class LojaDAOMySQL implements LojaDAO {
         }
     }
 
+    /**
+     * Remove uma loja por ID.
+     *
+     * @param lojaId ID da loja a ser removida.
+     */
     @Override
     public void removerLoja(int lojaId) {
         try (Connection conn = StorageMySQL.getConnection()) {
@@ -48,6 +66,12 @@ public class LojaDAOMySQL implements LojaDAO {
         }
     }
 
+    /**
+     * Busca uma loja por ID.
+     *
+     * @param lojaId ID da loja a ser buscada.
+     * @return Loja retorna a laja encontrada.
+     */
     @Override
     public Loja buscarLojaPorId(int lojaId) {
         try (Connection conn = StorageMySQL.getConnection()) {
@@ -66,6 +90,11 @@ public class LojaDAOMySQL implements LojaDAO {
         return null;
     }
 
+    /**
+     * Lista todas as lojas.
+     *
+     * @return Lista de lojas.
+     */
     @Override
     public List<Loja> listarLojas() {
         List<Loja> lojas = new ArrayList<>();
@@ -86,6 +115,12 @@ public class LojaDAOMySQL implements LojaDAO {
         return lojas;
     }
 
+    /**
+     * Lista os produtos de uma loja.
+     *
+     * @param lojaId ID da loja.
+     * @return Lista de produtos.
+     */
     @Override
     public List<Produto> listarProdutosDaLoja(int lojaId) {
         List<Produto> produtos = new ArrayList<>();
@@ -109,6 +144,12 @@ public class LojaDAOMySQL implements LojaDAO {
         return produtos;
     }
 
+    /**
+     * Adiciona um produto à loja.
+     *
+     * @param lojaId ID da loja.
+     * @param produto Produto a ser adicionado.
+     */
     @Override
     public void adicionarProdutoNaLoja(int lojaId, Produto produto) {
         try (Connection conn = StorageMySQL.getConnection()) {
@@ -122,6 +163,13 @@ public class LojaDAOMySQL implements LojaDAO {
         }
     }
 
+    /**
+     * Remove um produto da loja.
+     *
+     * @param lojaId ID da loja.
+     * @param produtoId ID do produto.
+     * @return True se o produto foi removido, false caso contrário.
+     */
     @Override
     public boolean removerProdutoDaLoja(int lojaId, int produtoId) {
         try (Connection conn = StorageMySQL.getConnection()) {
@@ -134,5 +182,15 @@ public class LojaDAOMySQL implements LojaDAO {
         } catch (Exception e) {
             throw new RuntimeException("Erro ao remover produto da loja no MySQL", e);
         }
+    }
+
+    /**
+     * Retorna a representação em String do objeto.
+     *
+     * @return String representando o objeto.
+     */
+    @Override
+    public String toString() {
+        return "Dao (Data Access Object) de Loja em MySQL";
     }
 }

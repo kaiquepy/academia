@@ -8,10 +8,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Classe de serviço para Loja.
+ */
 public class LojaConsoleView {
     private static final Scanner scanner = new Scanner(System.in);
     private static final LojaController lojaController = new LojaController();
 
+    /**
+     * Método para exibir o menu de opções.
+     */
     public static void exibirMenu() {
         int opcao;
         do {
@@ -42,6 +48,9 @@ public class LojaConsoleView {
         } while (opcao != 0);
     }
 
+    /**
+     * Método para adicionar uma loja.
+     */
     private static void adicionarLoja() {
         System.out.print("Nome da Loja: ");
         String nome = scanner.nextLine();
@@ -50,6 +59,9 @@ public class LojaConsoleView {
         System.out.println("Loja adicionada com sucesso.");
     }
 
+    /**
+     * Método para atualizar uma loja.
+     */
     private static void atualizarLoja() {
         System.out.print("ID da Loja: ");
         int lojaId = scanner.nextInt();
@@ -61,6 +73,9 @@ public class LojaConsoleView {
         System.out.println("Loja atualizada com sucesso.");
     }
 
+    /**
+     * Método para remover uma loja.
+     */
     private static void removerLoja() {
         System.out.print("ID da Loja: ");
         int lojaId = scanner.nextInt();
@@ -68,6 +83,9 @@ public class LojaConsoleView {
         System.out.println("Loja removida com sucesso.");
     }
 
+    /**
+     * Método para listar todas as lojas.
+     */
     private static void listarLojas() {
         List<Loja> lojas = lojaController.listarLojas();
         if (lojas.isEmpty()) {
@@ -77,6 +95,9 @@ public class LojaConsoleView {
         }
     }
 
+    /**
+     * Método para adicionar um produto à loja.
+     */
     private static void adicionarProduto() {
         System.out.print("ID da Loja: ");
         int lojaId = scanner.nextInt();
@@ -88,6 +109,9 @@ public class LojaConsoleView {
         System.out.println("Produto adicionado à loja com sucesso.");
     }
 
+    /**
+     * Método para remover um produto da loja.
+     */
     private static void removerProduto() {
         System.out.print("ID da Loja: ");
         int lojaId = scanner.nextInt();
@@ -97,6 +121,9 @@ public class LojaConsoleView {
         System.out.println("Produto removido da loja com sucesso.");
     }
 
+    /**
+     * Método para listar os produtos de uma loja.
+     */
     private static void listarProdutos() {
         System.out.print("ID da Loja: ");
         int lojaId = scanner.nextInt();
@@ -106,5 +133,17 @@ public class LojaConsoleView {
         } else {
             produtos.forEach(System.out::println);
         }
+    }
+
+    /**
+     * Sobreposição do método toString para retornar qual controller está sendo utilizado.
+     *
+     * @return String com o controller da loja.
+     */
+    @Override
+    public String toString() {
+        return "LojaConsoleView{" +
+                "lojaController=" + lojaController +
+                '}';
     }
 }
