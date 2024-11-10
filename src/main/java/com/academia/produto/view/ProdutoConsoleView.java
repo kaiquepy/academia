@@ -6,12 +6,19 @@ import com.academia.produto.model.Produto;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Classe de serviço para Produto.
+ */
 public class ProdutoConsoleView {
     private static final Scanner scanner = new Scanner(System.in);
     private static final ProdutoController produtoController = new ProdutoController();
 
+    /**
+     * Método para exibir o menu de opções.
+     */
     public static void exibirMenu() {
         int opcao;
+
         do {
             System.out.println("\n--- Gestão de Produtos ---");
             System.out.println("1. Adicionar Produto");
@@ -36,6 +43,9 @@ public class ProdutoConsoleView {
         } while (opcao != 0);
     }
 
+    /**
+     * Método para adicionar um produto.
+     */
     private static void adicionarProduto() {
         System.out.print("Nome do Produto: ");
         String nome = scanner.nextLine();
@@ -50,6 +60,9 @@ public class ProdutoConsoleView {
         System.out.println("Produto adicionado com sucesso!");
     }
 
+    /**
+     * Método para atualizar um produto.
+     */
     private static void atualizarProduto() {
         System.out.print("ID do Produto: ");
         int produtoId = scanner.nextInt();
@@ -67,6 +80,9 @@ public class ProdutoConsoleView {
         System.out.println("Produto atualizado com sucesso!");
     }
 
+    /**
+     * Método para remover um produto.
+     */
     private static void removerProduto() {
         System.out.print("ID do Produto: ");
         int produtoId = scanner.nextInt();
@@ -74,6 +90,9 @@ public class ProdutoConsoleView {
         System.out.println("Produto removido com sucesso!");
     }
 
+    /**
+     * Método para buscar um produto por ID.
+     */
     private static void buscarProdutoPorId() {
         System.out.print("ID do Produto: ");
         int produtoId = scanner.nextInt();
@@ -85,6 +104,9 @@ public class ProdutoConsoleView {
         }
     }
 
+    /**
+     * Método para listar todos os produtos.
+     */
     private static void listarProdutos() {
         List<Produto> produtos = produtoController.listarProdutos();
         if (produtos.isEmpty()) {
@@ -92,5 +114,17 @@ public class ProdutoConsoleView {
         } else {
             produtos.forEach(System.out::println);
         }
+    }
+
+    /**
+     * Sobreposição do método toString para retornar qual controller está sendo utilizado.
+     *
+     * @return String com o controller de produto.
+     */
+    @Override
+    public String toString() {
+        return "ProdutoConsoleView{" +
+                "produtoController=" + produtoController +
+                '}';
     }
 }
