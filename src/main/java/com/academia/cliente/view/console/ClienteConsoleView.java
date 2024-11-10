@@ -33,26 +33,13 @@ public class ClienteConsoleView {
             scanner.nextLine(); // Limpar o buffer
 
             switch (opcao) {
-                case 1:
-                    adicionarCliente();
-                    break;
-                case 2:
-                    atualizarCliente();
-                    break;
-                case 3:
-                    removerCliente();
-                    break;
-                case 4:
-                    buscarCliente();
-                    break;
-                case 5:
-                    clienteController.listarClientes();
-                    break;
-                case 0:
-                    System.out.println("Saindo...");
-                    break;
-                default:
-                    System.out.println("Opção inválida!");
+                case 1 -> adicionarCliente();
+                case 2 -> atualizarCliente();
+                case 3 -> removerCliente();
+                case 4 -> buscarCliente();
+                case 5 -> clienteController.listarClientes();
+                case 0 -> System.out.println("Saindo...");
+                default -> System.out.println("Opção inválida!");
             }
         } while (opcao != 0);
     }
