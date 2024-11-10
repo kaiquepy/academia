@@ -76,6 +76,6 @@ public class ClienteController {
      * Lista todos os clientes cadastrados.
      */
     public void listarClientes() {
-        clienteDAO.listarClientes().forEach(c -> System.out.println("Cliente: " + c.getNome()));
+        clienteDAO.listarClientes().forEach(System.out::println);
     }
 }
