@@ -10,7 +10,15 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+ * Classe de acesso a dados (DAO) para Venda em MySQL.
+ */
 public class VendaDAOMySQL implements VendaDAO {
+    /*
+     * Método para adicionar uma venda.
+     *
+     * @param venda Venda a ser adicionada.
+     */
     @Override
     public void adicionarVenda(Venda venda) {
         try (Connection conn = StorageMySQL.getConnection()) {
@@ -36,6 +44,12 @@ public class VendaDAOMySQL implements VendaDAO {
         }
     }
 
+    /*
+     * Método para buscar uma venda por ID.
+     *
+     * @param id ID da venda a ser buscada.
+     * @return Venda encontrada.
+     */
     @Override
     public Venda buscarVendaPorId(int id) {
         try (Connection conn = StorageMySQL.getConnection()) {
@@ -44,7 +58,7 @@ public class VendaDAOMySQL implements VendaDAO {
             stmt.setInt(1, id);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
-                List<Produto> produtos = listarProdutosDaVenda(id, conn);
+                List<Produto> produtos = listarProdutosDaVenda(id);
                 return new Venda(id, produtos, rs.getDouble("valor_total"), rs.getDate("data_venda").toLocalDate());
             }
         } catch (Exception e) {
@@ -53,6 +67,11 @@ public class VendaDAOMySQL implements VendaDAO {
         return null;
     }
 
+    /*
+     * Método para listar todas as vendas.
+     *
+     * @return Lista de vendas.
+     */
     @Override
     public List<Venda> listarVendas() {
         List<Venda> vendas = new ArrayList<>();
@@ -62,7 +81,7 @@ public class VendaDAOMySQL implements VendaDAO {
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
                 int vendaId = rs.getInt("id");
-                List<Produto> produtos = listarProdutosDaVenda(vendaId, conn);
+                List<Produto> produtos = listarProdutosDaVenda(vendaId);
                 Venda venda = new Venda(vendaId, produtos, rs.getDouble("valor_total"), rs.getDate("data_venda").toLocalDate());
                 vendas.add(venda);
             }
@@ -72,9 +91,15 @@ public class VendaDAOMySQL implements VendaDAO {
         return vendas;
     }
 
-    private List<Produto> listarProdutosDaVenda(int vendaId, Connection conn) {
+    /*
+     * Método para listar produtos da venda.
+     *
+     * @param vendaId ID da venda.
+     * @return Lista de produtos da venda.
+     */
+    private List<Produto> listarProdutosDaVenda(int vendaId) {
         List<Produto> produtos = new ArrayList<>();
-        try {
+        try (Connection conn = StorageMySQL.getConnection()) {
             String sql = "SELECT p.* FROM produtos p JOIN venda_produtos vp ON p.id = vp.produto_id WHERE vp.venda_id = ?";
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setInt(1, vendaId);
@@ -92,5 +117,15 @@ public class VendaDAOMySQL implements VendaDAO {
             throw new RuntimeException("Erro ao listar produtos da venda no MySQL", e);
         }
         return produtos;
+    }
+
+    /*
+     * Sobreposição do método toString para retornar uma descrição.
+     *
+     * @return Descrição da classe.
+     */
+    @Override
+    public String toString() {
+        return "Data Access Object (DAO) para Venda em MySQL.";
     }
 }
