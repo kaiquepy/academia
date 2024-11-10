@@ -34,27 +34,13 @@ public class FuncionarioConsoleView {
             scanner.nextLine();
 
             switch (opcao) {
-                case 1:
-                    adicionarFuncionario();
-                    break;
-                case 2:
-                    atualizarFuncionario();
-                    break;
-                case 3:
-                    removerFuncionario();
-                    break;
-                case 4:
-                    buscarFuncionarioPorId();
-                    break;
-                case 5:
-                    listarFuncionarios();
-                    break;
-                case 0:
-                    System.out.println("Saindo...");
-                    break;
-                default:
-                    System.out.println("Opção inválida!");
-                    break;
+                case 1 -> adicionarFuncionario();
+                case 2 -> atualizarFuncionario();
+                case 3 -> removerFuncionario();
+                case 4 -> buscarFuncionarioPorId();
+                case 5 -> listarFuncionarios();
+                case 0 -> System.out.println("Saindo...");
+                default -> System.out.println("Opção inválida!");
             }
         } while (opcao != 0);
     }
@@ -100,7 +86,7 @@ public class FuncionarioConsoleView {
         } else {
             System.out.println("--- Lista de Funcionários ---");
             for (Funcionario funcionario : funcionarios) {
-                System.out.println("ID: " + funcionario.getId() + ", Nome: " + funcionario.getNome() + ", Cargo: " + funcionario.getCargo() + ", Salário: " + funcionario.getSalario());
+                System.out.println(funcionario);
             }
         }
     }
