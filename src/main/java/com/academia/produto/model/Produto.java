@@ -4,6 +4,8 @@ package com.academia.produto.model;
  * Classe que representa um Produto.
  */
 public class Produto {
+    private static int contadorInstancias = 0;
+
     private int id;
     private String nome;
     private double preco;
@@ -22,6 +24,15 @@ public class Produto {
         this.nome = nome;
         this.preco = preco;
         this.categoria = categoria;
+        incrementarContadorInstancias();
+    }
+
+    public static int getContadorInstancias() {
+        return contadorInstancias;
+    }
+
+    private static void incrementarContadorInstancias() {
+        contadorInstancias++;
     }
 
     // region Getters and Setter
