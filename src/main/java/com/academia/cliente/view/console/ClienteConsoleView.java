@@ -27,6 +27,7 @@ public class ClienteConsoleView {
             System.out.println("3. Remover Cliente");
             System.out.println("4. Buscar Cliente");
             System.out.println("5. Listar Clientes");
+            System.out.println("6. Clientes instanciados");
             System.out.println("0. Sair");
             System.out.print("Escolha uma opção: ");
             opcao = scanner.nextInt();
@@ -38,6 +39,7 @@ public class ClienteConsoleView {
                 case 3 -> removerCliente();
                 case 4 -> buscarCliente();
                 case 5 -> clienteController.listarClientes();
+                case 6 -> clientesInstanciados();
                 case 0 -> System.out.println("Saindo...");
                 default -> System.out.println("Opção inválida!");
             }
@@ -111,5 +113,22 @@ public class ClienteConsoleView {
         } else {
             System.out.println("Cliente não encontrado!");
         }
+    }
+
+    public static void clientesInstanciados() {
+        System.out.println("Clientes instanciados [private]: " + Cliente.getContadorInstanciasPrivate());
+        System.out.println("Clientes instanciados [protected]: " + Cliente.getContadorInstanciasProtected());
+    }
+
+    /**
+     * Retorna a representação em String do objeto ClienteConsoleView.
+     *
+     * @return String clienteController.
+     */
+    @Override
+    public String toString() {
+        return "ClienteConsoleView{" +
+                "clienteController=" + clienteController +
+                '}';
     }
 }
