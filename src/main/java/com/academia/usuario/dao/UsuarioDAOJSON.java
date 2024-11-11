@@ -60,6 +60,7 @@ public class UsuarioDAOJSON implements UsuarioDAO {
 
     @Override
     public List<Usuario> listarUsuarios() {
-        return new ArrayList<>(usuarios);
+        List<Usuario> usuarios = storage.load();
+        return usuarios != null ? usuarios : new ArrayList<>();
     }
 }
