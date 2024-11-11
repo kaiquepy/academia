@@ -27,7 +27,7 @@ public class StorageJSON<T> {
     public StorageJSON(Type type, String filePath) {
         this.gson = new Gson();
         this.type = type;
-        this.FILE_PATH = filePath;
+        this.FILE_PATH = "src/main/resources/" + filePath;
     }
 
     /*
