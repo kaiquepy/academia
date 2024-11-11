@@ -26,6 +26,7 @@ public class ProdutoConsoleView {
             System.out.println("3. Remover Produto");
             System.out.println("4. Buscar Produto por ID");
             System.out.println("5. Listar Todos os Produtos");
+            System.out.println("6. Produtos instanciados");
             System.out.println("0. Sair");
             System.out.print("Escolha uma opção: ");
             opcao = scanner.nextInt();
@@ -37,6 +38,7 @@ public class ProdutoConsoleView {
                 case 3 -> removerProduto();
                 case 4 -> buscarProdutoPorId();
                 case 5 -> listarProdutos();
+                case 6 -> produtosInstanciados();
                 case 0 -> System.out.println("Saindo...");
                 default -> System.out.println("Opção inválida!");
             }
@@ -114,6 +116,10 @@ public class ProdutoConsoleView {
         } else {
             produtos.forEach(System.out::println);
         }
+    }
+
+    private static void produtosInstanciados() {
+        System.out.println("Produtos instanciados: " + Produto.getContadorInstancias());
     }
 
     /**
