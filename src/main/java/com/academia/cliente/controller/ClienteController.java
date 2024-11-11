@@ -78,4 +78,16 @@ public class ClienteController {
     public void listarClientes() {
         clienteDAO.listarClientes().forEach(System.out::println);
     }
+
+    /**
+     * Retorna a representação em String do objeto ClienteController.
+     *
+     * @return String clienteDAO.
+     */
+    @Override
+    public String toString() {
+        return "ClienteController{" +
+                "clienteDAO=" + clienteDAO +
+                '}';
+    }
 }
