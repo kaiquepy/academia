@@ -21,7 +21,6 @@ public class UsuarioConsoleView {
             System.out.println("3. Remover Usuário");
             System.out.println("4. Buscar Usuário por ID");
             System.out.println("5. Listar Todos os Usuários");
-            System.out.println("6. Quantidade de instâncias de Usuário");
             System.out.println("0. Sair");
             System.out.print("Escolha uma opção: ");
             opcao = scanner.nextInt();
