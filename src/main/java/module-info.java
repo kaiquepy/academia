@@ -13,5 +13,6 @@ module com.academia {
     opens com.academia.produto.model to com.google.gson;
     opens com.academia.estoque.model to com.google.gson;
     opens com.academia.usuario.model to com.google.gson;
+    opens com.academia.aula.model to com.google.gson;
     exports com.academia;
 }
