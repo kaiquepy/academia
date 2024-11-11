@@ -120,4 +120,16 @@ public class FuncionarioConsoleView {
         funcionarioController.removerFuncionario(id);
         System.out.println("Funcionário removido com sucesso!");
     }
+
+    /**
+     * Sobreposição do método toString para retornar qual controller está sendo utilizado.
+     *
+     * @return String com o controller de funcionário.
+     */
+    @Override
+    public String toString() {
+        return "FuncionarioConsoleView{" +
+                "funcionarioController=" + funcionarioController +
+                '}';
+    }
 }

@@ -5,7 +5,7 @@ import com.academia.funcionario.model.Funcionario;
 import java.util.ArrayList;
 
 /**
- * Interface FuncionarioDAO representa as operações de acesso a dados para a entidade Funcionario.
+ * Interface FuncionarioDAO representa as operações de acesso a dados para a entidade Funcionário.
  *
  * Métodos desta interface permitem a adição, remoção, atualização,
  * busca e listagem de funcionários em um sistema de persistência de dados.
@@ -43,7 +43,7 @@ public interface FuncionarioDAO {
     /**
      * Lista todos os funcionários cadastrados.
      *
-     * @return List<Funcionario>
+     * @return List<> de funcionários.
      */
     ArrayList<Funcionario> listarFuncionarios();
 }

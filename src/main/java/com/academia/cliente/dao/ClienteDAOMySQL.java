@@ -108,7 +108,7 @@ public class ClienteDAOMySQL implements ClienteDAO {
     /**
      * Lista todos os clientes cadastrados.
      *
-     * @return List<Cliente>
+     * @return List<> de clientes.
      */
     @Override
     public List<Cliente> listarClientes() {
@@ -132,5 +132,15 @@ public class ClienteDAOMySQL implements ClienteDAO {
         }
         System.out.println("Listando clientes do MySQL");
         return clientes;
+    }
+
+    /**
+     * Retorna a representação em String do objeto.
+     *
+     * @return String representando o objeto.
+     */
+    @Override
+    public String toString() {
+        return "Dao (Data Access Object) de Cliente em MySQL";
     }
 }

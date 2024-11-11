@@ -16,6 +16,9 @@ import java.util.stream.Collectors;
 public class ClienteDAOJSON implements ClienteDAO {
     private final StorageJSON<Cliente> storage;
 
+    /**
+     * Construtor da classe.
+     */
     public ClienteDAOJSON() {
         Type clienteListType = new TypeToken<List<Cliente>>() {}.getType();
         this.storage = new StorageJSON<>(clienteListType, "clientes.json");
@@ -92,11 +95,23 @@ public class ClienteDAOJSON implements ClienteDAO {
     /**
      * Lista todos os clientes cadastrados.
      *
-     * @return List<Cliente>
+     * @return List<> de clientes.
      */
     @Override
     public List<Cliente> listarClientes() {
         List<Cliente> clientes = storage.load();
         return clientes != null ? clientes : new ArrayList<>();
+    }
+
+    /**
+     * Retorna a representação em String do objeto ClienteDAOJSON.
+     *
+     * @return String storage.
+     */
+    @Override
+    public String toString() {
+        return "ClienteDAOJSON{" +
+                "storage=" + storage +
+                '}';
     }
 }

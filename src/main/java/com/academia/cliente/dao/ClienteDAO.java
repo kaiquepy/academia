@@ -43,7 +43,7 @@ public interface ClienteDAO {
     /**
      * Lista todos os clientes cadastrados.
      *
-     * @return List<Cliente>
+     * @return List<> de clientes.
      */
     List<Cliente> listarClientes();
 }
