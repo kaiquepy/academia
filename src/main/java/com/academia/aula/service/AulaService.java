@@ -1,8 +1,8 @@
 package com.academia.aula.service;
 
 import com.academia.aula.dao.AulaDAO;
+import com.academia.aula.dao.AulaDAOJSON;
 import com.academia.aula.dao.AulaDAOMySQL;
-import com.academia.aula.dao.json.AulaDAOJSON;
 import com.academia.aula.model.Aula;
 import com.academia.utils.Config;
 
