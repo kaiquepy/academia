@@ -1,5 +1,6 @@
 package com.academia.dashboard.view.console;
 
+import com.academia.aula.view.AulaConsoleView;
 import com.academia.cliente.view.console.ClienteConsoleView;
 import com.academia.estoque.view.EstoqueConsoleView;
 import com.academia.funcionario.view.console.FuncionarioConsoleView;
@@ -30,6 +31,7 @@ public class DashboardConsoleView {
             System.out.println("5. Gerenciar Produtos");
             System.out.println("6. Gerenciar Estoque");
             System.out.println("7. Gerenciar Usuários");
+            System.out.println("8. Gerenciar Aulas");
             System.out.println("0. Sair");
             System.out.print("Escolha uma opção: ");
             escolhaMenu = scanner.nextInt();
@@ -42,6 +44,7 @@ public class DashboardConsoleView {
                 case 5 -> ProdutoConsoleView.exibirMenu();
                 case 6 -> EstoqueConsoleView.exibirMenu();
                 case 7 -> UsuarioConsoleView.exibirMenu();
+                case 8 -> AulaConsoleView.exibirMenu();
                 case 0 -> System.out.println("Saindo do sistema...");
                 default -> System.out.println("Opção inválida. Tente novamente.");
             }
