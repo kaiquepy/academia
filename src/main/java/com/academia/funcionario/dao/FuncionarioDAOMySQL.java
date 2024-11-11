@@ -8,6 +8,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+/**
+ * Classe de acesso a dados (DAO) para Funcionário em MySQL.
+ */
 public class FuncionarioDAOMySQL implements FuncionarioDAO {
     /**
      * Adiciona um novo funcionário.
@@ -72,7 +75,7 @@ public class FuncionarioDAOMySQL implements FuncionarioDAO {
      * Busca um funcionário pelo ID.
      *
      * @param id Identificador do funcionário.
-     * @return Funcionario
+     * @return Funcionario retorna o funcionário encontrado.
      */
     @Override
     public Funcionario buscarFuncionarioPorID(int id) {
@@ -98,7 +101,7 @@ public class FuncionarioDAOMySQL implements FuncionarioDAO {
     /**
      * Lista todos os funcionários cadastrados.
      *
-     * @return ArrayList<Funcionario>
+     * @return ArrayList<> de Funcionarios.
      */
     @Override
     public ArrayList<Funcionario> listarFuncionarios() {
@@ -119,5 +122,15 @@ public class FuncionarioDAOMySQL implements FuncionarioDAO {
         } catch (Exception e) {
             throw new RuntimeException("Erro ao listar funcionários do MySQL", e);
         }
+    }
+
+    /**
+     * Retorna a representação em String do objeto.
+     *
+     * @return String representando o objeto.
+     */
+    @Override
+    public String toString() {
+        return "Dao (Data Access Object) de Funcionário em MySQL";
     }
 }
