@@ -71,7 +71,7 @@ public class LojaController {
      * @param lojaId    ID da loja.
      * @param produtoId ID do produto.
      */
-    public void adicionarProdutoNaLoja(int lojaId, int produtoId, int quantidade) {
+    public void adicionarProdutoNaLoja(int lojaId, int produtoId) {
         lojaService.adicionarProdutoNaLoja(lojaId, produtoId);
     }
 

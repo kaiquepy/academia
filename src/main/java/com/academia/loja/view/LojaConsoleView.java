@@ -103,9 +103,7 @@ public class LojaConsoleView {
         int lojaId = scanner.nextInt();
         System.out.print("ID do Produto: ");
         int produtoId = scanner.nextInt();
-        System.out.print("Quantidade: ");
-        int quantidade = scanner.nextInt();
-        lojaController.adicionarProdutoNaLoja(lojaId, produtoId, quantidade);
+        lojaController.adicionarProdutoNaLoja(lojaId, produtoId);
         System.out.println("Produto adicionado à loja com sucesso.");
     }
 
