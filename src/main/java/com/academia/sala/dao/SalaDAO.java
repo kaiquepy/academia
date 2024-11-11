@@ -26,7 +26,7 @@ public interface SalaDAO {
     /**
      * Lista todas as salas cadastradas.
      *
-     * @return List<Sala>
+     * @return List<> de salas.
      */
     List<Sala> listarSalas();
 
